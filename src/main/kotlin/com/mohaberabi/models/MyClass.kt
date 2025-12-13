@@ -23,3 +23,10 @@ data class MyClass(
     val nullalble: String? = null,
     val map2: Map<AnotherClass, AnotherClass>
 )
+//<server>
+//	<id>${server}</id>
+//	<username>hW44pV</username>
+//	<password>WR5v6LLN0c194rDzQjWIDIf0BMxppbNjL</password>
+//</server>
+//./gradlew -Psigning.password=Push@201098 generatePgpKeys --name "Mohab Erabi <mohapp201098@gmail.com>"
+//./gradlew uploadPublicPgpKey --keyring /Users/mohaberabi/IdeaProjects/FakeKlass/build/pgp/public_75FA8022.asc
