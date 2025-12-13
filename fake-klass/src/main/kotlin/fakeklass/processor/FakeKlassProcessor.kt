@@ -8,7 +8,6 @@ import fakeklass.processor.generator.FakeKlassGenerator
 import fakeklass.processor.utils.allDataClasses
 import fakeklass.processor.utils.fakeKlassOutput
 import fakeklass.processor.utils.fakeKlassPackages
-import fakeklass.processor.utils.fakeKlassSourceSet
 
 class FakeKlassProcessor(
     private val env: SymbolProcessorEnvironment,
