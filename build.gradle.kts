@@ -1,17 +1,17 @@
 plugins {
     kotlin("jvm") version "2.2.20"
-    id("com.google.devtools.ksp") version "2.2.20-2.0.4"
+    id("com.vanniktech.maven.publish") version "0.34.0" apply false
 }
 
 group = "org.mohaberabi.testideplugin"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    google()
     mavenCentral()
 }
 dependencies {
     testImplementation(kotlin("test"))
-    ksp(project(":fake-klass"))
 }
 
 tasks.test {
@@ -21,13 +21,3 @@ kotlin {
     jvmToolchain(21)
 }
 
-ksp {
-    arg(
-        "fake.outputPackage",
-        "org.mohaberabi.testideplugin.com.mohaberabi.models.fakes"
-    )
-    arg(
-        "fake.packages",
-        "org.mohaberabi.testideplugin.com.mohaberabi.models"
-    )
-}

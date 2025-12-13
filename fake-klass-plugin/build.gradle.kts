@@ -1,28 +1,45 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
-    kotlin("jvm") version "2.2.20"
+    `kotlin-dsl`
     id("com.vanniktech.maven.publish") version "0.34.0"
 }
 
-group = "io.github.mohaberabi"
-version = "0.0.3"
+group = "io.github.mohaberabi.fakeklassplugin"
 
-repositories {
-    mavenCentral()
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
 
 dependencies {
-    testImplementation(kotlin("test"))
-    implementation("com.google.devtools.ksp:symbol-processing-api:2.2.20-2.0.2")
-    implementation("com.squareup:kotlinpoet:1.18.1")
-    implementation("com.squareup:kotlinpoet-ksp:1.18.1")
+    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.2.20-2.0.4")
 }
 
-tasks.test { useJUnitPlatform(); }
-kotlin { jvmToolchain(21); }
+tasks {
+    validatePlugins {
+        enableStricterValidation = true
+        failOnWarning = true
+    }
+}
 
-
-
+gradlePlugin {
+    plugins {
+        register("fakeKlassPlugin") {
+            id = "io.github.mohaberabi.fakeklass.plugin"
+            implementationClass = "FakeKlassConventionPlugin"
+            displayName = "FakeKlass"
+            description = "Generates type-safe fake builders for Kotlin data classes using KSP"
+        }
+    }
+}
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()

@@ -4,4 +4,5 @@ plugins {
 rootProject.name = "FakeKlass"
 
 include(":fake-klass")
-includeBuild("build-logic")
+include(":fake-klass-plugin")
+
