@@ -19,12 +19,6 @@ class FakeKlassProcessor(
     private val options = env.options
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
-//        val sourceSet = options.fakeKlassSourceSet()
-//        println("FakeKlassProcessor----options${options}")
-//        if (sourceSet == null) {
-//            return emptyList()
-//        }
-//        if (sourceSet.contains("test", ignoreCase = true).not()) return emptyList()
         val packages = options.fakeKlassPackages()
         val outputPackage = options.fakeKlassOutput()
         val allFiles = resolver.getAllFiles().toList()

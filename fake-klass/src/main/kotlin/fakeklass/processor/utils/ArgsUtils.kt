@@ -5,8 +5,6 @@ import fakeklass.processor.PACKAGES_ARG
 import fakeklass.processor.SOURCE_SET_ARG
 
 
-internal fun Map<String, String>.fakeKlassSourceSet() = this[SOURCE_SET_ARG]
-
 internal fun Map<String, String>.fakeKlassPackages() = (this[PACKAGES_ARG] ?: "").split(".")
     .map { it.trim() }
     .filter { it.isNotBlank() }

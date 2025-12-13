@@ -3,7 +3,7 @@ plugins {
     id("com.vanniktech.maven.publish") version "0.34.0"
 }
 
-group = "io.github.mohaberabi"
+group = "io.github.erabi"
 version = "0.0.1"
 
 repositories {
