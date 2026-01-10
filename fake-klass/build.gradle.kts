@@ -14,8 +14,6 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("com.google.devtools.ksp:symbol-processing-api:2.2.20-2.0.2")
-    implementation("com.squareup:kotlinpoet:1.18.1")
-    implementation("com.squareup:kotlinpoet-ksp:1.18.1")
 }
 
 tasks.test { useJUnitPlatform(); }
