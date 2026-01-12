@@ -19,7 +19,5 @@ private fun KspExtension.configureKspArgs(
     allowedPackages: Set<String>
 ) {
     val packages = allowedPackages.joinToString(",")
-    val outPutPackages = allowedPackages.joinToString(",") { "${it}.fakes" }
     arg("fake.packages", packages)
-    arg("fake.outputPackage", outPutPackages)
 }
