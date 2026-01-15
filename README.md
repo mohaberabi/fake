@@ -52,12 +52,12 @@ Tell FakeKlass which packages contain your models:
 Generated fakes are available and shipped  **only in for the source set you want **.
 
 ```kotlin
-fakeKlass {
-    allowedPackages(
+ksp {
+    arg("fake.packages",     
         "com.example.models",
-        "com.example.domain"
-    )
+        "com.example.domain")
 }
+
 sourceSets {
     commonTest {
         kotlin.srcDir(layout.buildDirectory.dir("generated/ksp/metadata/commonMain"))

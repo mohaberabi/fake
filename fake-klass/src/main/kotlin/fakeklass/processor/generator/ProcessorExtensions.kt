@@ -11,10 +11,11 @@ import fakeklass.processor.constants.PACKAGES_ARG
 fun Resolver.getFilesInsidePackages(
     packages: Set<String>
 ) = getAllFiles().filter { file ->
-    val pckge = file.packageName.asString()
-    packages.any { trget -> trget.contains(trget) || trget == pckge }
+    val pkg = file.packageName.asString()
+    packages.any { target ->
+        pkg == target || pkg.startsWith("$target.")
+    }
 }
-
 fun Sequence<KSFile>.filterIsDataClasses() =
     flatMap { it.declarations }
         .filterIsInstance<KSClassDeclaration>()
